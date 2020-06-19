@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage'
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyCyGtKEQ__bkk5K4sll801DSY3jESsd-Bk",
@@ -13,9 +15,11 @@ var firebaseConfig = {
   measurementId: "G-Z1N9F5XQLR"
 };
 // Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
  //firebase.analytics();
 
-//firebase.firestore().settings({timestampsInSnapshots:true})
+// firebase.firestore().settings({timestampsInSnapshots:true})
 
-export default firebase
+const storage = firebase.storage()
+export {storage, firebase as default} 

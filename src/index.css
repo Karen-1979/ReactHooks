@@ -26,3 +26,96 @@ body {
 .todo i {
   z-index: 2;
 }
+#pfoto{
+  width: 500px;
+  height: 500px;
+}
+.icons{
+  float: right;
+  height: 0;
+    background-color: red;
+}
+
+.srs{
+  margin: 5px;
+}
+.boxLeft{
+  float: left;
+  border: 1px solid;
+  width: 12%;
+}
+.userText{
+  padding: 5px;
+}
+
+.userText:hover{
+  background-color: rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.bloc{
+  max-width: 900px;
+}
+.bordered{
+  border: 1px solid;
+}
+
+.boxNone{
+  display: none;
+}
+.boxBlok{
+  display: block;
+}
+.ButttonRight{
+  float: right;
+}
+.signup{
+  max-width: 700px;
+}
+.photoUrl{
+  display: flex;
+  min-height: 500px;
+  width: 500px;
+  padding: 0;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#uploader{
+  -webkit-appearance:none ;
+  appearance: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.hv{
+  height: 500px;
+  width: 100%;
+}
+.shadew{
+  color: black;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
+}
+
+.post{
+  width: 500px;
+  height: 119px;
+  margin: auto;
+}
+.postlist{
+  margin: 200px 100px;
+}
+.posts{
+  width: 88%;
+  height: 30vh;
+  margin: auto;
+}
+.shadews{
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
+  width: 50%;
+  margin: auto;
+}

@@ -1,62 +1,91 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createProject } from "../../store/action/ProjectActions";
-import { Redirect } from "react-router-dom";
+
+import PostPhoto from "../message/PostPhoto";
+
+
 
 class CreateProgect extends Component {
   state = {
     title: "",
-    content: ""
+    addpost:'boxNone',
+    blockpost:"boxBlok",
+    add:'boxNone',
+    block:'boxBlok'
   };
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     });
   };
-  handleSubmit = e => {
-    e.preventDefault();
+  
+  handleSubmit = () => {
     console.log(this.state);
-    this.props.createProject(this.state);
-    this.props.history.push("/");
+    this.setState({title:'',add:'boxBlok',block:'boxNone'})
   };
+  handleOnclik =()=>{
+    this.setState({addpost:'boxBlok',blockpost:'boxNone'})
+  }
 
   render() {
-    const { auth } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />;
+    const { auth,profile } = this.props;
+    console.log(this.props)
+  
+    
+    
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Create new Project</h5>
-          <div className="input-field">
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
+      <div className="shadews ">
+      <div className="posts " >
+        <div  >
+          <div className="chip">
+            <img src={profile.photoURL} alt="" />
+             {profile.firstName} 
+            <div className="chip">
+              Tag
+              <i className="close material-icons">close</i>
+            </div>
           </div>
+          
+          <label htmlFor="title">New Post</label>
+          <input className={this.state.blockpost} type="text" onClick={this.handleOnclik}/>
+          <div className={this.state.addpost}>
+         
+
+          
           <div className="input-field">
-            <label htmlFor="content">Project Content</label>
-            <textarea
+          
+            <label htmlFor="title">Text</label>
+            <input
+            type="text"
               className="materialize-textarea"
               id="content"
               onChange={this.handleChange}
+              value={this.state.content}
             />
+         <div className={this.state.block}>
+            <button className="btn pink lighten-1 z-depth-0"onClick={this.handleSubmit}> 
+            <i className="large material-icons">burst_mode</i>
+            
+            </button>
+            </div>
           </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Create</button>
           </div>
-        </form>
+        </div>
+      </div>
+      <div className={this.state.add}>
+            <PostPhoto photo={this.state} />
+            </div>
       </div>
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile:state.firebase.profile,
+  
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createProject: (project) => dispatch(createProject(project))
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateProgect);
+export default connect(mapStateToProps, null)(CreateProgect);

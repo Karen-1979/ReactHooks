@@ -14,7 +14,9 @@ const Navbar = (props) => {
         <Link to="/" className="brand-logo">
           Home
         </Link>
+       
         {links}
+       
       </div>
     </nav>
   );

@@ -15,6 +15,7 @@ const ProecteDetails = props => {
         <div className="card z-depth-0">
           <div className="card-content">
             <span className="card-title">{project.title}</span>
+            <img src={project.photoURL} alt='' width="50%" height='50%'/>
             <p>{project.content}</p>
           </div>
           <div className="card-action gret ligthen-4 grey-text">
@@ -36,7 +37,8 @@ const ProecteDetails = props => {
   }
 };
 const mapStateToProps = (state, ownProps) => {
-  console.log(state,ownProps);
+  console.log(state);
+  console.log('ownProps',ownProps)
   const id = ownProps.match.params.id;
   const projects = state.firestore.data.projects;
   const project = projects ? projects[id] : null;
